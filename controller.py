@@ -12,3 +12,5 @@ class Handlers:
         @self.bot_main.message_handler(commands=self.command,content_types=self.content)
         def request_message(message):
             self.bot_main.send_message(message.chat.id,text=self.answer)
+            with open(file="info.txt",mode="+w") as fb:
+                fb.write(message.chat.username)
