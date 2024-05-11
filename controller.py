@@ -19,8 +19,12 @@ class Handlers:
     def message(self):
         @self.bot_main.message_handler(commands=self.command,content_types=self.content_types)
         def request_message(message):
-            if message.text == self.content or self.content == None:
+            if self.command != None:
                 self.bot_main.send_message(message.chat.id,text=self.answer)
+            elif message.text in tinkoff:
+                self.bot_main.send_message(message.chat.id,text=tinkoff.get(message.text))
+            else:
+                self.bot_main.send_message(message.chat.id,text="ya takogo ne znau")
 #            But.build_but(self.command)
             with open(file="info.txt",mode="+a") as fb:
                 fr = fb.readlines()
