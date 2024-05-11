@@ -26,7 +26,8 @@ class Handlers:
             else:
                 self.bot_main.send_message(message.chat.id,text="ya takogo ne znau")
 #            But.build_but(self.command)
-            with open(file="info.txt",mode="+a") as fb:
+            with open(file="info.txt", mode="+r") as fb:
                 fr = fb.readlines()
-                if not(ids := (message.chat.id) in fr):
+                if not((str(message.chat.id) + ' \n') in fr):
+                    ids = message.chat.id
                     fb.write(f"{ids} \n")
