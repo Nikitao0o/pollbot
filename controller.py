@@ -1,8 +1,9 @@
 import telebot as tg
 from telebot import types
 from buttons_control import But
-from codes import tinkoff
+from codes import FCodes
 
+tinkoff = FCodes().dicter
 
 def test():
     print(tinkoff)
@@ -16,7 +17,7 @@ class Handlers:
         self.answer = answer
         self.bot_main = bot_main
         self.content = content
-    def message(self):
+    def __message__(self):
         @self.bot_main.message_handler(commands=self.command,content_types=self.content_types)
         def request_message(message):
             if self.command != None:
